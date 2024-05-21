@@ -1,0 +1,39 @@
+api:
+  http_server:
+    listen_addr: localhost:8080
+    timeout: 4s
+    idle_timeout: 10s
+    cors:
+      origins:
+        - "http://*"
+        - "https://*"
+      methods:
+        - "GET"
+        - "POST"
+      headers:
+        - "Accept"
+        - "Authorization"
+        - "Content-Type"
+      credentials: true
+
+security:
+  bcrypt_cost: 7
+  jwt:
+    access_ttl: 5 # time to live in minutes
+    refresh_ttl: 30 # time to live in minutes
+
+database:
+  sqlite:
+    path: storage.db # sqlite3 path
+  postgre:
+    host: localhost
+    port: 5432
+    user: postgres
+    database: postgres
+
+logger:
+  log_level: debug
+  format: text
+
+env:
+  mode: prod # "prod" or "dev"
